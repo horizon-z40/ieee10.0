@@ -1,14 +1,19 @@
 import sys
+from math import sqrt
 
 def is_Prime(n):
     if n == 1 or n == 0:
         return False
     else:
-        i=3
+        if n==3:
+            return True
+        if n%3==0:
+            return False
+        i=5
         while i*i<=n:
-            if n % i == 0:
+            if n % i == 0 or n%(i+2)==0:
                 return False
-            i=i+2
+            i=i+6
         return True
 l = list(sys.stdin)
 try:
@@ -21,8 +26,8 @@ try:
             num -= t
             x = t
             findanswer=False
-            while num - x >= 0:
-                if is_Prime(x) and is_Prime(num - x):
+            while num - 2*x >= 0:
+                if is_Prime(x) and is_Prime(num - x): 
                     findanswer=True
                     print t, x, num - x
                     break
@@ -30,7 +35,7 @@ try:
                     x += 2
             if findanswer:
                 break
-        if num - x == 0:
+        if num - 2*x == 0:
             print("counterexample")
 except:
     print("counterexample")
