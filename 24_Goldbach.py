@@ -22,7 +22,7 @@ try:
             x = t
             findanswer=False
             while num - x >= 0:
-                if is_Prime(num - x) and is_Prime(x):
+                if is_Prime(x) and is_Prime(num - x):
                     findanswer=True
                     print t, x, num - x
                     break
